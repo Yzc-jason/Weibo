@@ -170,7 +170,7 @@
     /**  时间 */
     UILabel *timeLabel  = [[UILabel alloc]init];
     timeLabel.font =  StatusCellTimeFont;
-    timeLabel.textColor = [UIColor lightGrayColor];
+    timeLabel.textColor = [UIColor orangeColor];
     [originalView addSubview:timeLabel];
     self.timeLabel = timeLabel;
 

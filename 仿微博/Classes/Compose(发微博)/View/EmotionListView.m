@@ -8,18 +8,12 @@
 
 #import "EmotionListView.h"
 #import "UIView+Extension.h"
-
-// 每一页的表情个数
-#define EmotionPageSize 20
-
-// RGB颜色
-#define Color(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
-
-// 随机色
-#define RandomColor Color(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+#import "EmotionPageView.h"
 
 
-@interface EmotionListView()
+
+
+@interface EmotionListView()<UIScrollViewDelegate>
 
 @property(nonatomic, weak) UIScrollView *scrollView;
 @property(nonatomic, weak) UIPageControl *pageControl;
@@ -36,14 +30,18 @@
         self.backgroundColor = [UIColor whiteColor];
         
         UIScrollView *scrollView = [[UIScrollView alloc]init];
-        scrollView.backgroundColor = [UIColor redColor];
+//        scrollView.backgroundColor = [UIColor redColor];
         scrollView.pagingEnabled = YES;
         scrollView.showsVerticalScrollIndicator = NO;
         scrollView.showsHorizontalScrollIndicator = NO;
+        scrollView.delegate = self;
         [self addSubview:scrollView];
         self.scrollView = scrollView;
         
         UIPageControl *pageControl = [[UIPageControl alloc]init];
+        pageControl.userInteractionEnabled = NO;
+        [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_normal"] forKeyPath:@"pageImage"];
+        [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_selected"] forKeyPath:@"currentPageImage"];
         [self addSubview:pageControl];
         self.pageControl = pageControl;
     }
@@ -57,8 +55,18 @@
     self.pageControl.numberOfPages = count;
     for(int i = 0; i <self.pageControl.numberOfPages; i++)
     {
-        UIView *pageView = [[UIView alloc]init];
-        pageView.backgroundColor = RandomColor;
+        EmotionPageView *pageView = [[EmotionPageView alloc]init];
+        //计算一页的表情范围
+        NSRange range;
+        range.location = i *EmotionPageSize;
+        //left:剩余的表情数（可以截取的）
+        NSUInteger left = emotions.count - range.location;
+        if(left >= EmotionPageSize ){
+            range.length =EmotionPageSize;
+        }else{
+            range.length = left;
+        }
+        pageView.emotions = [emotions subarrayWithRange:range];
         [self.scrollView addSubview:pageView];
     }
 }
@@ -83,7 +91,7 @@
     NSUInteger count = self.scrollView.subviews.count;
     for(int i = 0; i <count; i++)
     {
-        UIView *pageView = self.scrollView.subviews[i];
+        EmotionPageView *pageView = self.scrollView.subviews[i];
         pageView.height = self.scrollView.height;
         pageView.width = self.scrollView.width;
         pageView.x = pageView.width * i;
@@ -93,6 +101,12 @@
     
     self.scrollView.contentSize = CGSizeMake(count * self.scrollView.width, 0);
     
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    double pageNo = scrollView.contentOffset.x / scrollView.width;
+    self.pageControl.currentPage =(int)(pageNo + 0.5);
 }
 
 @end

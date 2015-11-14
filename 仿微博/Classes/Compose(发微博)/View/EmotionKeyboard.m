@@ -69,7 +69,7 @@
         NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
         self.emojiListView.emotions = [Emoition objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
     }
-    return _defaultListView;
+    return _emojiListView;
 }
 
 -(EmotionListView *)lxhListView
