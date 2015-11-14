@@ -24,7 +24,15 @@
 		1820DB221BE7C54E00F98277 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820DB191BE7C54E00F98277 /* ProfileViewController.m */; };
 		182F91EF1BF0B526001D91E6 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F91EE1BF0B526001D91E6 /* NSDate+Extension.m */; };
 		182F91F21BF0C2FB001D91E6 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F91F11BF0C2FB001D91E6 /* NSString+Extension.m */; };
+		18476A171BF4196300A960A9 /* ComposeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18476A161BF4196300A960A9 /* ComposeToolBar.m */; };
+		18476A1A1BF42FDC00A960A9 /* PhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18476A191BF42FDC00A960A9 /* PhotosView.m */; };
 		184D66AB1BE9A98A008AC3F4 /* TitleMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D66AA1BE9A98A008AC3F4 /* TitleMenuController.m */; };
+		1851311E1BF6317000286D6B /* EmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851311D1BF6317000286D6B /* EmotionKeyboard.m */; };
+		185131211BF63F2F00286D6B /* EmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 185131201BF63F2F00286D6B /* EmotionListView.m */; };
+		185131241BF63F4A00286D6B /* EmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 185131231BF63F4A00286D6B /* EmotionTabBar.m */; };
+		185131271BF64DC800286D6B /* EmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 185131261BF64DC800286D6B /* EmotionTabBarButton.m */; };
+		185131291BF6534300286D6B /* EmotionIcons in Resources */ = {isa = PBXBuildFile; fileRef = 185131281BF6534300286D6B /* EmotionIcons */; };
+		1851312D1BF655D200286D6B /* Emoition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851312C1BF655D200286D6B /* Emoition.m */; };
 		187488971BE99B6600A45BF9 /* DropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 187488961BE99B6600A45BF9 /* DropDownMenu.m */; };
 		1876BE711BEB7FD1000C9FB4 /* NewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1876BE701BEB7FD1000C9FB4 /* NewFeatureController.m */; };
 		1876BE761BEB92A3000C9FB4 /* OAuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1876BE751BEB92A2000C9FB4 /* OAuthController.m */; };
@@ -153,8 +161,23 @@
 		182F91EE1BF0B526001D91E6 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		182F91F01BF0C2FB001D91E6 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		182F91F11BF0C2FB001D91E6 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		18476A151BF4196300A960A9 /* ComposeToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeToolBar.h; sourceTree = "<group>"; };
+		18476A161BF4196300A960A9 /* ComposeToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeToolBar.m; sourceTree = "<group>"; };
+		18476A181BF42FDC00A960A9 /* PhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosView.h; sourceTree = "<group>"; };
+		18476A191BF42FDC00A960A9 /* PhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosView.m; sourceTree = "<group>"; };
 		184D66A91BE9A98A008AC3F4 /* TitleMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleMenuController.h; sourceTree = "<group>"; };
 		184D66AA1BE9A98A008AC3F4 /* TitleMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleMenuController.m; sourceTree = "<group>"; };
+		1851311C1BF6317000286D6B /* EmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionKeyboard.h; sourceTree = "<group>"; };
+		1851311D1BF6317000286D6B /* EmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionKeyboard.m; sourceTree = "<group>"; };
+		1851311F1BF63F2E00286D6B /* EmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionListView.h; sourceTree = "<group>"; };
+		185131201BF63F2F00286D6B /* EmotionListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionListView.m; sourceTree = "<group>"; };
+		185131221BF63F4A00286D6B /* EmotionTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionTabBar.h; sourceTree = "<group>"; };
+		185131231BF63F4A00286D6B /* EmotionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionTabBar.m; sourceTree = "<group>"; };
+		185131251BF64DC800286D6B /* EmotionTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionTabBarButton.h; sourceTree = "<group>"; };
+		185131261BF64DC800286D6B /* EmotionTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionTabBarButton.m; sourceTree = "<group>"; };
+		185131281BF6534300286D6B /* EmotionIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EmotionIcons; sourceTree = "<group>"; };
+		1851312B1BF655D200286D6B /* Emoition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emoition.h; sourceTree = "<group>"; };
+		1851312C1BF655D200286D6B /* Emoition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emoition.m; sourceTree = "<group>"; };
 		187488951BE99B6600A45BF9 /* DropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownMenu.h; sourceTree = "<group>"; };
 		187488961BE99B6600A45BF9 /* DropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownMenu.m; sourceTree = "<group>"; };
 		1876BE6F1BEB7FD1000C9FB4 /* NewFeatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureController.h; sourceTree = "<group>"; };
@@ -570,6 +593,34 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		18476A141BF4192C00A960A9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18476A151BF4196300A960A9 /* ComposeToolBar.h */,
+				18476A161BF4196300A960A9 /* ComposeToolBar.m */,
+				18476A181BF42FDC00A960A9 /* PhotosView.h */,
+				18476A191BF42FDC00A960A9 /* PhotosView.m */,
+				1851311C1BF6317000286D6B /* EmotionKeyboard.h */,
+				1851311D1BF6317000286D6B /* EmotionKeyboard.m */,
+				1851311F1BF63F2E00286D6B /* EmotionListView.h */,
+				185131201BF63F2F00286D6B /* EmotionListView.m */,
+				185131221BF63F4A00286D6B /* EmotionTabBar.h */,
+				185131231BF63F4A00286D6B /* EmotionTabBar.m */,
+				185131251BF64DC800286D6B /* EmotionTabBarButton.h */,
+				185131261BF64DC800286D6B /* EmotionTabBarButton.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1851312A1BF655AF00286D6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1851312B1BF655D200286D6B /* Emoition.h */,
+				1851312C1BF655D200286D6B /* Emoition.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1876BE6E1BEB7FB5000C9FB4 /* NewFeature(新特性) */ = {
 			isa = PBXGroup;
 			children = (
@@ -685,6 +736,7 @@
 		187F66101BE785E30094AF20 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				185131281BF6534300286D6B /* EmotionIcons */,
 				187F66111BE785E30094AF20 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -831,6 +883,8 @@
 		18CC25A31BF3995C00308942 /* Compose(发微博) */ = {
 			isa = PBXGroup;
 			children = (
+				1851312A1BF655AF00286D6B /* Model */,
+				18476A141BF4192C00A960A9 /* View */,
 				18CC25A41BF3995C00308942 /* Controller */,
 			);
 			path = "Compose(发微博)";
@@ -968,6 +1022,7 @@
 				187F661D1BE785E30094AF20 /* Assets.xcassets in Resources */,
 				189538D31BEC9E3800FA0FCA /* MBProgressHUD.bundle in Resources */,
 				18778BC31BED2332002C02D5 /* LoadMoreFooter.xib in Resources */,
+				185131291BF6534300286D6B /* EmotionIcons in Resources */,
 				18C1257E1BE8612800E624A6 /* Test2Controller.xib in Resources */,
 				18FDD0DC1BE84F3C00CCB63E /* Test1ViewController.xib in Resources */,
 			);
@@ -1002,7 +1057,9 @@
 				1876BEA21BEB972E000C9FB4 /* AFSecurityPolicy.m in Sources */,
 				1876BE9F1BEB972E000C9FB4 /* AFHTTPRequestOperationManager.m in Sources */,
 				189538F81BEC9E4A00FA0FCA /* NSData+ImageContentType.m in Sources */,
+				1851312D1BF655D200286D6B /* Emoition.m in Sources */,
 				1876BE9E1BEB972E000C9FB4 /* AFHTTPRequestOperation.m in Sources */,
+				185131271BF64DC800286D6B /* EmotionTabBarButton.m in Sources */,
 				18CC25A71BF3998800308942 /* ComposeController.m in Sources */,
 				189538FD1BEC9E4A00FA0FCA /* SDWebImageDownloaderOperation.m in Sources */,
 				189539341BECAD2700FA0FCA /* NSObject+MJMember.m in Sources */,
@@ -1010,11 +1067,13 @@
 				189538FB1BEC9E4A00FA0FCA /* SDWebImageDecoder.m in Sources */,
 				1895392D1BECAD2700FA0FCA /* MJIvar.m in Sources */,
 				1895392E1BECAD2700FA0FCA /* MJMember.m in Sources */,
+				1851311E1BF6317000286D6B /* EmotionKeyboard.m in Sources */,
 				1820DB221BE7C54E00F98277 /* ProfileViewController.m in Sources */,
 				189538D41BEC9E3800FA0FCA /* MBProgressHUD.m in Sources */,
 				189538C81BEC994F00FA0FCA /* Account.m in Sources */,
 				1895390E1BECAC9900FA0FCA /* User.m in Sources */,
 				182F91F21BF0C2FB001D91E6 /* NSString+Extension.m in Sources */,
+				185131211BF63F2F00286D6B /* EmotionListView.m in Sources */,
 				18CC25AA1BF3A56400308942 /* TextView.m in Sources */,
 				1820DB201BE7C54E00F98277 /* AppDelegate.m in Sources */,
 				189538F71BEC9E4A00FA0FCA /* MKAnnotationView+WebCache.m in Sources */,
@@ -1043,6 +1102,7 @@
 				18FDD0DB1BE84F3C00CCB63E /* Test1ViewController.m in Sources */,
 				187488971BE99B6600A45BF9 /* DropDownMenu.m in Sources */,
 				1876BEA31BEB972E000C9FB4 /* AFURLConnectionOperation.m in Sources */,
+				18476A171BF4196300A960A9 /* ComposeToolBar.m in Sources */,
 				189539321BECAD2700FA0FCA /* NSObject+MJCoding.m in Sources */,
 				1895392A1BECAD2700FA0FCA /* MJArgument.m in Sources */,
 				1895392B1BECAD2700FA0FCA /* MJConst.m in Sources */,
@@ -1062,6 +1122,7 @@
 				1876BEAD1BEB972E000C9FB4 /* UIRefreshControl+AFNetworking.m in Sources */,
 				189538FA1BEC9E4A00FA0FCA /* SDWebImageCompat.m in Sources */,
 				181888F01BF1F6FF00165BF7 /* UIImage+Tool.m in Sources */,
+				18476A1A1BF42FDC00A960A9 /* PhotosView.m in Sources */,
 				184D66AB1BE9A98A008AC3F4 /* TitleMenuController.m in Sources */,
 				1876BEA81BEB972E000C9FB4 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				1817953D1BEF19E600070170 /* Photo.m in Sources */,
@@ -1074,6 +1135,7 @@
 				18C1257D1BE8612800E624A6 /* Test2Controller.m in Sources */,
 				1895392C1BECAD2700FA0FCA /* MJFoundation.m in Sources */,
 				1876BE711BEB7FD1000C9FB4 /* NewFeatureController.m in Sources */,
+				185131241BF63F4A00286D6B /* EmotionTabBar.m in Sources */,
 				189539061BEC9E4A00FA0FCA /* UIView+WebCacheOperation.m in Sources */,
 				189538F91BEC9E4A00FA0FCA /* SDImageCache.m in Sources */,
 				1876BEA11BEB972E000C9FB4 /* AFNetworkReachabilityManager.m in Sources */,
