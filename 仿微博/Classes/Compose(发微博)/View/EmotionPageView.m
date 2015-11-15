@@ -13,6 +13,7 @@
 #import "EmotionButton.h"
 #import "EmotionPopView.h"
 #import "EmotionTool.h"
+#import "Const.h"
 
 @interface EmotionPageView()
 
@@ -134,7 +135,7 @@
 
 -(void)deleteBtnClick
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"DeleteDidClicktNotification" object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:EmotionDidDeleteNotification object:nil userInfo:nil];
 }
 
 -(void)btnClick:(EmotionButton *)btn
@@ -154,8 +155,8 @@
     [EmotionTool saveRecentEmotion:emotion];
     //选中表情发出通知
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    userInfo[@"SelectEmotionKey"] = emotion;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"EmotionDidSelectNotification" object:nil userInfo:userInfo];
+    userInfo[SelectEmotionKey] = emotion;
+    [[NSNotificationCenter defaultCenter] postNotificationName:EmotionDidSelectNotification object:nil userInfo:userInfo];
 }
 
 

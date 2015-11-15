@@ -11,6 +11,7 @@
 #import "UIWindow+Extension.h"
 #import "AccountTool.h"
 #import "MBProgressHUD+MJ.h"
+#import "Const.h"
 
 @interface OAuthController ()<UIWebViewDelegate>
 
@@ -24,8 +25,8 @@
     webView.frame =self.view.bounds;
     webView.delegate = self;
     [self.view addSubview:webView];
-    
-    NSURL *url = [NSURL URLWithString:@"https://api.weibo.com/oauth2/authorize?client_id=3445043596&redirect_uri=http://www.baidu.com"];
+    NSString *urlStr = [NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@",APPKey,APPRedirect];
+    NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
 }
@@ -89,10 +90,10 @@
      // AFN的AFJSONResponseSerializer默认不接受text/plain这种类型
     
     NSMutableDictionary *paramgs = [NSMutableDictionary dictionary];
-    paramgs[@"client_id"] =@"3445043596" ;
-    paramgs[@"client_secret"] = @"2c60ea697d9f2a36acbf9ba2fa25a968";
+    paramgs[@"client_id"] =APPKey;
+    paramgs[@"client_secret"] = APPSecret;
     paramgs[@"grant_type"] = @"authorization_code";
-    paramgs[@"redirect_uri"] = @"http://www.baidu.com";
+    paramgs[@"redirect_uri"] = APPRedirect;
     paramgs[@"code"] = code;
     [manager POST:@"https://api.weibo.com/oauth2/access_token" parameters:paramgs success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         [MBProgressHUD hideHUD];

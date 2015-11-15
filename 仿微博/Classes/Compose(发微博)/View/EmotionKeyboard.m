@@ -105,6 +105,13 @@
     return self;
 }
 
+
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)emotionDidSelect
 {
     //加载沙盒数据

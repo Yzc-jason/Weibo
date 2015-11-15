@@ -42,6 +42,7 @@
 		1851312D1BF655D200286D6B /* Emoition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851312C1BF655D200286D6B /* Emoition.m */; };
 		1871FB6A1BF8305E00664F4F /* EmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871FB691BF8305E00664F4F /* EmotionAttachment.m */; };
 		1871FB6E1BF83BDE00664F4F /* EmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871FB6D1BF83BDE00664F4F /* EmotionTool.m */; };
+		1871FB711BF8751100664F4F /* Const.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871FB701BF8751100664F4F /* Const.m */; };
 		187488971BE99B6600A45BF9 /* DropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 187488961BE99B6600A45BF9 /* DropDownMenu.m */; };
 		1876BE711BEB7FD1000C9FB4 /* NewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1876BE701BEB7FD1000C9FB4 /* NewFeatureController.m */; };
 		1876BE761BEB92A3000C9FB4 /* OAuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1876BE751BEB92A2000C9FB4 /* OAuthController.m */; };
@@ -204,6 +205,8 @@
 		1871FB691BF8305E00664F4F /* EmotionAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionAttachment.m; sourceTree = "<group>"; };
 		1871FB6C1BF83BDE00664F4F /* EmotionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionTool.h; sourceTree = "<group>"; };
 		1871FB6D1BF83BDE00664F4F /* EmotionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionTool.m; sourceTree = "<group>"; };
+		1871FB6F1BF8751100664F4F /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
+		1871FB701BF8751100664F4F /* Const.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Const.m; sourceTree = "<group>"; };
 		187488951BE99B6600A45BF9 /* DropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownMenu.h; sourceTree = "<group>"; };
 		187488961BE99B6600A45BF9 /* DropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownMenu.m; sourceTree = "<group>"; };
 		1876BE6F1BEB7FD1000C9FB4 /* NewFeatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureController.h; sourceTree = "<group>"; };
@@ -532,6 +535,8 @@
 			children = (
 				1820DB0D1BE7C54E00F98277 /* AppDelegate.h */,
 				1820DB0E1BE7C54E00F98277 /* AppDelegate.m */,
+				1871FB6F1BF8751100664F4F /* Const.h */,
+				1871FB701BF8751100664F4F /* Const.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -1166,6 +1171,7 @@
 				1895392B1BECAD2700FA0FCA /* MJConst.m in Sources */,
 				1817953A1BEEE21400070170 /* StatusFrame.m in Sources */,
 				1876BEA41BEB972E000C9FB4 /* AFURLRequestSerialization.m in Sources */,
+				1871FB711BF8751100664F4F /* Const.m in Sources */,
 				181795401BEF352A00070170 /* StatusToolbar.m in Sources */,
 				189539011BEC9E4A00FA0FCA /* UIImage+GIF.m in Sources */,
 				189539081BECA46F00FA0FCA /* Foundation+Log.m in Sources */,

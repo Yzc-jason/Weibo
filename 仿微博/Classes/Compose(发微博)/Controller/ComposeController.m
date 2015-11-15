@@ -17,6 +17,7 @@
 #import "EmotionKeyboard.h"
 #import "Emoition.h"
 #import "EmotionTextView.h"
+#import "Const.h"
 
 @interface ComposeController()<UITextViewDelegate,ComposeToolbarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /** 输入文本控件 */
@@ -154,10 +155,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
     //选中表情
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelect:) name:@"EmotionDidSelectNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelect:) name:EmotionDidSelectNotification object:nil];
     
     //删除按钮通知
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteDidClick) name:@"DeleteDidClicktNotification" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteDidClick) name:EmotionDidDeleteNotification object:nil];
 }
 
 #pragma mark - 导航菜单按钮方法
