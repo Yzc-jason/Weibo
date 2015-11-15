@@ -24,6 +24,11 @@
 		1820DB221BE7C54E00F98277 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820DB191BE7C54E00F98277 /* ProfileViewController.m */; };
 		182CFABB1BF7139C00B77FDF /* EmotionPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182CFABA1BF7139C00B77FDF /* EmotionPageView.m */; };
 		182CFABE1BF719D600B77FDF /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 182CFABD1BF719D600B77FDF /* NSString+Emoji.m */; };
+		182CFAC01BF7900700B77FDF /* EmotionPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182CFABF1BF7900700B77FDF /* EmotionPopView.xib */; };
+		182CFAC31BF7902000B77FDF /* EmotionPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182CFAC21BF7902000B77FDF /* EmotionPopView.m */; };
+		182CFAC61BF7923E00B77FDF /* EmotionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 182CFAC51BF7923E00B77FDF /* EmotionButton.m */; };
+		182CFAC91BF7A3E200B77FDF /* EmotionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182CFAC81BF7A3E200B77FDF /* EmotionTextView.m */; };
+		182CFACC1BF7A6B400B77FDF /* UITextView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 182CFACB1BF7A6B400B77FDF /* UITextView+Extension.m */; };
 		182F91EF1BF0B526001D91E6 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F91EE1BF0B526001D91E6 /* NSDate+Extension.m */; };
 		182F91F21BF0C2FB001D91E6 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F91F11BF0C2FB001D91E6 /* NSString+Extension.m */; };
 		18476A171BF4196300A960A9 /* ComposeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18476A161BF4196300A960A9 /* ComposeToolBar.m */; };
@@ -163,6 +168,15 @@
 		182CFABA1BF7139C00B77FDF /* EmotionPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionPageView.m; sourceTree = "<group>"; };
 		182CFABC1BF719D600B77FDF /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		182CFABD1BF719D600B77FDF /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
+		182CFABF1BF7900700B77FDF /* EmotionPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmotionPopView.xib; sourceTree = "<group>"; };
+		182CFAC11BF7902000B77FDF /* EmotionPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionPopView.h; sourceTree = "<group>"; };
+		182CFAC21BF7902000B77FDF /* EmotionPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionPopView.m; sourceTree = "<group>"; };
+		182CFAC41BF7923E00B77FDF /* EmotionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionButton.h; sourceTree = "<group>"; };
+		182CFAC51BF7923E00B77FDF /* EmotionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionButton.m; sourceTree = "<group>"; };
+		182CFAC71BF7A3E200B77FDF /* EmotionTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionTextView.h; sourceTree = "<group>"; };
+		182CFAC81BF7A3E200B77FDF /* EmotionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionTextView.m; sourceTree = "<group>"; };
+		182CFACA1BF7A6B400B77FDF /* UITextView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Extension.h"; sourceTree = "<group>"; };
+		182CFACB1BF7A6B400B77FDF /* UITextView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Extension.m"; sourceTree = "<group>"; };
 		182F91ED1BF0B526001D91E6 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		182F91EE1BF0B526001D91E6 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		182F91F01BF0C2FB001D91E6 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
@@ -616,6 +630,13 @@
 				185131261BF64DC800286D6B /* EmotionTabBarButton.m */,
 				182CFAB91BF7139C00B77FDF /* EmotionPageView.h */,
 				182CFABA1BF7139C00B77FDF /* EmotionPageView.m */,
+				182CFABF1BF7900700B77FDF /* EmotionPopView.xib */,
+				182CFAC11BF7902000B77FDF /* EmotionPopView.h */,
+				182CFAC21BF7902000B77FDF /* EmotionPopView.m */,
+				182CFAC41BF7923E00B77FDF /* EmotionButton.h */,
+				182CFAC51BF7923E00B77FDF /* EmotionButton.m */,
+				182CFAC71BF7A3E200B77FDF /* EmotionTextView.h */,
+				182CFAC81BF7A3E200B77FDF /* EmotionTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -886,6 +907,8 @@
 				182F91EE1BF0B526001D91E6 /* NSDate+Extension.m */,
 				182F91F01BF0C2FB001D91E6 /* NSString+Extension.h */,
 				182F91F11BF0C2FB001D91E6 /* NSString+Extension.m */,
+				182CFACA1BF7A6B400B77FDF /* UITextView+Extension.h */,
+				182CFACB1BF7A6B400B77FDF /* UITextView+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1028,6 +1051,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182CFAC01BF7900700B77FDF /* EmotionPopView.xib in Resources */,
 				187F66201BE785E30094AF20 /* LaunchScreen.storyboard in Resources */,
 				187F661D1BE785E30094AF20 /* Assets.xcassets in Resources */,
 				189538D31BEC9E3800FA0FCA /* MBProgressHUD.bundle in Resources */,
@@ -1079,6 +1103,7 @@
 				1895392D1BECAD2700FA0FCA /* MJIvar.m in Sources */,
 				1895392E1BECAD2700FA0FCA /* MJMember.m in Sources */,
 				1851311E1BF6317000286D6B /* EmotionKeyboard.m in Sources */,
+				182CFACC1BF7A6B400B77FDF /* UITextView+Extension.m in Sources */,
 				1820DB221BE7C54E00F98277 /* ProfileViewController.m in Sources */,
 				189538D41BEC9E3800FA0FCA /* MBProgressHUD.m in Sources */,
 				189538C81BEC994F00FA0FCA /* Account.m in Sources */,
@@ -1091,12 +1116,14 @@
 				1876BE761BEB92A3000C9FB4 /* OAuthController.m in Sources */,
 				189539041BEC9E4A00FA0FCA /* UIImageView+HighlightedWebCache.m in Sources */,
 				1876BEAA1BEB972E000C9FB4 /* UIButton+AFNetworking.m in Sources */,
+				182CFAC31BF7902000B77FDF /* EmotionPopView.m in Sources */,
 				189539001BEC9E4A00FA0FCA /* UIButton+WebCache.m in Sources */,
 				1820DB1F1BE7C54E00F98277 /* TabBarController.m in Sources */,
 				189539051BEC9E4A00FA0FCA /* UIImageView+WebCache.m in Sources */,
 				1876BEAB1BEB972E000C9FB4 /* UIImageView+AFNetworking.m in Sources */,
 				18C125811BE913DC00E624A6 /* SearchBar.m in Sources */,
 				189538C31BEC97F500FA0FCA /* UIWindow+Extension.m in Sources */,
+				182CFAC91BF7A3E200B77FDF /* EmotionTextView.m in Sources */,
 				1895392F1BECAD2700FA0FCA /* MJMethod.m in Sources */,
 				1876BEAC1BEB972E000C9FB4 /* UIProgressView+AFNetworking.m in Sources */,
 				181795371BEEE10500070170 /* StatusCell.m in Sources */,
@@ -1141,6 +1168,7 @@
 				1876BEA91BEB972E000C9FB4 /* UIAlertView+AFNetworking.m in Sources */,
 				18BDEBB41BE91CEA00F0B3E3 /* TabBar.m in Sources */,
 				181888ED1BF1EB7D00165BF7 /* IconView.m in Sources */,
+				182CFAC61BF7923E00B77FDF /* EmotionButton.m in Sources */,
 				181888E71BF1D56B00165BF7 /* StatusPhotosView.m in Sources */,
 				189538FF1BEC9E4A00FA0FCA /* SDWebImagePrefetcher.m in Sources */,
 				18C1257D1BE8612800E624A6 /* Test2Controller.m in Sources */,

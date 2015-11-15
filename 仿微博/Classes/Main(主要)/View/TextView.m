@@ -38,6 +38,12 @@
     [self setNeedsDisplay];
 }
 
+-(void)setAttributedText:(NSAttributedString *)attributedText
+{
+    [super setAttributedText:attributedText];
+    [self setNeedsDisplay];
+}
+
 -(void)setText:(NSString *)text
 {
     [super setText:text];

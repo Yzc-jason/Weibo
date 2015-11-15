@@ -15,10 +15,12 @@
 #import "ComposeToolBar.h"
 #import "PhotosView.h"
 #import "EmotionKeyboard.h"
+#import "Emoition.h"
+#import "EmotionTextView.h"
 
 @interface ComposeController()<UITextViewDelegate,ComposeToolbarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /** 输入文本控件 */
-@property(nonatomic, weak)TextView *textView;
+@property(nonatomic, weak)EmotionTextView *textView;
 /** 工具条 */
 @property(nonatomic, weak)ComposeToolBar *toolBar;
 /** 相册 */
@@ -39,7 +41,7 @@
     {
         self.emotionKeyboard = [[EmotionKeyboard alloc]init];
         self.emotionKeyboard.width = self.view.width;
-        self.emotionKeyboard.height = 253;
+        self.emotionKeyboard.height = 216;
     }
     return _emotionKeyboard;
 }
@@ -135,7 +137,7 @@
  */
 -(void)setupTextView
 {
-    TextView *textView = [[TextView alloc]init];
+    EmotionTextView *textView = [[EmotionTextView alloc]init];
     textView.frame = self.view.frame;
     textView.font = [UIFont systemFontOfSize:15];
     //垂直方向可以拖拽
@@ -145,9 +147,17 @@
     [textView becomeFirstResponder];
     [self.view addSubview:textView];
     self.textView = textView;
-    //监听通知
+    //文字改变通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:textView];
+    
+    //键盘的frame发生改变发出的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    //选中表情
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelect:) name:@"EmotionDidSelectNotification" object:nil];
+    
+    //删除按钮通知
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteDidClick) name:@"DeleteDidClicktNotification" object:nil];
 }
 
 #pragma mark - 导航菜单按钮方法
@@ -250,6 +260,21 @@
     
 }
 
+
+-(void)deleteDidClick
+{
+    [self.textView deleteBackward];
+}
+
+
+-(void)emotionDidSelect:(NSNotification *)notification
+{
+    Emoition *emotion = notification.userInfo[@"SelectEmotionKey"];
+    [self.textView insertEmotion:emotion];
+    
+}
+
+
 #pragma mark - UITextViewDelegate
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -325,12 +350,14 @@
     }
     //开始切换键盘
     self.switchingKeyboard = YES;
+    //退出键盘
     [self.textView endEditing:YES];
+    //结束键盘切换
+    self.switchingKeyboard = NO;
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.textView becomeFirstResponder];
-        
-        //结束键盘切换
-        self.switchingKeyboard = NO;
+  
     });
 }
 
