@@ -98,11 +98,19 @@
         tabBar.delagate =self;
         [self addSubview:tabBar];
         self.tabBar = tabBar;
+        
+        //选中表情
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelect) name:@"EmotionDidSelectNotification" object:nil];
     }
     return self;
 }
 
-
+-(void)emotionDidSelect
+{
+    //加载沙盒数据
+    self.rectentListView.emotions = [EmotionTool recentEmotions];
+    
+}
 
 
 

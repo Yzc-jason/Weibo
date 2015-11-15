@@ -37,4 +37,9 @@
     
 }
 
+-(BOOL)isEqual:(Emoition *)other
+{
+    return [self.chs isEqualToString:other.chs] || [self.code isEqualToString: other.code];
+}
+
 @end
