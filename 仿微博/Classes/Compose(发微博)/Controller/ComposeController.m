@@ -18,6 +18,8 @@
 #import "Emoition.h"
 #import "EmotionTextView.h"
 #import "Const.h"
+#import "HttpTool.h"
+
 
 @interface ComposeController()<UITextViewDelegate,ComposeToolbarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 /** 输入文本控件 */
@@ -217,21 +219,17 @@
     /**	status true string 要发布的微博文本内容，必须做URLencode，内容不超过140个汉字。*/
     /**	pic false binary 微博的配图。*/
     /**	access_token true string*/
-    // 1.请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    
-    // 2.拼接请求参数
+    // 1.拼接请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [AccountTool account].access_token;
     params[@"status"] = self.textView.fullText;
     
     // 3.发送请求
-    [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    [HttpTool post:@"https://api.weibo.com/2/statuses/update.json" paramgs:params success:^(id json) {
         [MBProgressHUD showSuccess:@"发送成功"];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败"];
     }];
-
 }
 
 

@@ -13,7 +13,7 @@
 #import "TitleMenuController.h"
 #import "TitleButton.h"
 #import "AccountTool.h"
-#import "AFNetworking.h"
+#import "HttpTool.h"
 #import "User.h"
 #import "MJExtension.h"
 #import "Status.h"
@@ -21,6 +21,7 @@
 #import "LoadMoreFooter.h"
 #import "StatusCell.h"
 #import "StatusFrame.h"
+#import "MJRefresh.h"
 
 @interface HomeViewController()<DropDownMenuDelegate>
 
@@ -74,15 +75,13 @@
 -(void) setupUnreadCount
 {
 
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     Account *account = [AccountTool account];
     NSMutableDictionary *paramgs = [NSMutableDictionary dictionary];
     paramgs[@"access_token"] =account.access_token ;
     paramgs[@"uid"] = account.uid ;
     
-    [manager GET:@"https://rm.api.weibo.com/2/remind/unread_count.json" parameters:paramgs success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        
-        NSString *status = [responseObject[@"status"] description];
+    [HttpTool get:@"https://rm.api.weibo.com/2/remind/unread_count.json" paramgs:paramgs success:^(id json) {
+          NSString *status = [json[@"status"] description];
         if([status isEqualToString:@"0"])
         {
             self.tabBarItem.badgeValue = nil;
@@ -91,12 +90,9 @@
             self.tabBarItem.badgeValue = status;
             [UIApplication sharedApplication].applicationIconBadgeNumber = status;
         }
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        
+    } failure:^(NSError *error) {
         NSLog(@"请求失败---%@",error);
     }];
-
-    
 }
 
 /**
@@ -117,13 +113,13 @@
 
 
 /**
- *  下拉刷新
+ *  上拉刷新
  */
 -(void) setupRefresh
 {
-    LoadMoreFooter *footer = [LoadMoreFooter footer];
-    footer.hidden = YES;
-    self.tableView.tableFooterView = footer;
+
+    [self.tableView addFooterWithTarget:self action:@selector(loadMoreStatus)];
+    self.tableView.footerRefreshingText = @"正在加载数据...";
     
 }
 
@@ -132,7 +128,7 @@
  */
 -(void) loadMoreStatus
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
     Account *account = [AccountTool account];
     NSMutableDictionary *paramgs = [NSMutableDictionary dictionary];
     paramgs[@"access_token"] =account.access_token ;
@@ -144,11 +140,12 @@
         long long maxId =lastStatusF.status.idstr.longLongValue - 1;
         paramgs[@"max_id"] = @(maxId);
     }
+
     
-    [manager GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:paramgs success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    [HttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json"  paramgs:paramgs success:^(id json) {
         //将“微博字典”数组转为 “微博模型” 数组
-        NSArray *newStatuses = [Status objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
-       
+        NSArray *newStatuses = [Status objectArrayWithKeyValuesArray:json[@"statuses"]];
+        
         NSArray *newFrames = [self stausFrameWithStatuses:newStatuses];
         // 将更多的微博数据，添加到总数组的最后面
         [self.statuesFrame addObjectsFromArray:newFrames];
@@ -158,11 +155,11 @@
         
         // 结束刷新(隐藏footer)
         self.tableView.tableFooterView.hidden = YES;
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+    } failure:^(NSError *error) {
         self.tableView.tableFooterView.hidden = YES;
         NSLog(@"请求失败---%@",error);
-    }];
 
+    }];
 }
 
 /**
@@ -170,17 +167,22 @@
  */
 -(void) setDownRefresh
 {
-    UIRefreshControl *control = [[UIRefreshControl alloc]init];
-    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:control];
+//    UIRefreshControl *control = [[UIRefreshControl alloc]init];
+//    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+//    [self.tableView addSubview:control];
+//    
+//    [control beginRefreshing];
+//    [self refreshStateChange:control];
     
-    [control beginRefreshing];
-    [self refreshStateChange:control];
+    //1.添加刷新控件
+    [self.tableView addHeaderWithTarget:self action:@selector(refreshStateChange)];
+    self.tableView.headerRefreshingText = @"正在加载数据...";
+    //2.进入刷新状态
+    [self.tableView headerBeginRefreshing];
 }
 
--(void)refreshStateChange:(UIRefreshControl *)control
+-(void)refreshStateChange
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     Account *account = [AccountTool account];
     NSMutableDictionary *paramgs = [NSMutableDictionary dictionary];
     paramgs[@"access_token"] =account.access_token ;
@@ -192,10 +194,11 @@
         paramgs[@"since_id"] = firstStatusF.status.idstr;
     }
     
-    [manager GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:paramgs success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    
+    [HttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json"  paramgs:paramgs success:^(id json) {
         //将“微博字典”数组转为 “微博模型” 数组
-       
-        NSArray *newStatuses = [Status objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        
+        NSArray *newStatuses = [Status objectArrayWithKeyValuesArray:json[@"statuses"]];
         NSArray *newFrames = [self stausFrameWithStatuses:newStatuses];
         
         //将最新的微博数据，添加到总数组最前面
@@ -205,39 +208,37 @@
         
         [self.tableView reloadData];
         
-        [control endRefreshing];
+        [self.tableView headerEndRefreshing];
         
         //显示最新的微博数量
         [self showNewStatusCount:newStatuses.count];
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-       [control endRefreshing];
+    } failure:^(NSError *error) {
+        [self.tableView headerEndRefreshing];
         NSLog(@"请求失败---%@",error);
     }];
 
-}
+  }
 
 
 -(void) setupUserInfo
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     Account *account = [AccountTool account];
     NSMutableDictionary *paramgs = [NSMutableDictionary dictionary];
     paramgs[@"access_token"] =account.access_token ;
      paramgs[@"uid"] =account.uid ;
 
-    [manager GET:@"https://api.weibo.com/2/users/show.json" parameters:paramgs success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    
+    [HttpTool get:@"https://api.weibo.com/2/users/show.json" paramgs:paramgs success:^(id json) {
         UIButton *titleButton =(UIButton *) self.navigationItem.titleView;
-        User *user = [User objectWithKeyValues:responseObject];
+        User *user = [User objectWithKeyValues:json];
         [titleButton setTitle:user.name forState:UIControlStateNormal];
         
         //存储昵称
         account.name = user.name;
         [AccountTool saveAccount:account];
-        
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        NSLog(@"请求失败---%@",error);
+    } failure:^(NSError *error) {
+         NSLog(@"请求失败---%@",error);
     }];
-
 }
 
 
@@ -388,22 +389,22 @@
     cell.statusFrame = self.statuesFrame[indexPath.row];
     return cell;
 }
-
--(void) scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    //如果tableView还没有数据，就直接返回
-    if(self.statuesFrame.count == 0 || self.tableView.tableFooterView.isHidden == NO) return;
-    CGFloat offsetY = scrollView.contentOffset.y;
-    //当最后一个cell完全显示在眼前是，contentOffset的y值
-    CGFloat judgeOffsetY = scrollView.contentSize.height +scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
-    if(offsetY >= judgeOffsetY)   //最后一个cell完全进入视野范围内
-    {
-        //显示footer
-        self.tableView.tableFooterView.hidden = NO;
-        //加载更多的数据
-        [self loadMoreStatus];
-    }
-}
+//
+//-(void) scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    //如果tableView还没有数据，就直接返回
+//    if(self.statuesFrame.count == 0 || self.tableView.tableFooterView.isHidden == NO) return;
+//    CGFloat offsetY = scrollView.contentOffset.y;
+//    //当最后一个cell完全显示在眼前是，contentOffset的y值
+//    CGFloat judgeOffsetY = scrollView.contentSize.height +scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
+//    if(offsetY >= judgeOffsetY)   //最后一个cell完全进入视野范围内
+//    {
+//        //显示footer
+//        self.tableView.tableFooterView.hidden = NO;
+//        //加载更多的数据
+//        [self loadMoreStatus];
+//    }
+//}
 
 
 @end

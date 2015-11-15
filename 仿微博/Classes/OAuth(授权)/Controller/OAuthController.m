@@ -7,11 +7,11 @@
 //
 
 #import "OAuthController.h"
-#import "AFNetworking.h"
 #import "UIWindow+Extension.h"
 #import "AccountTool.h"
 #import "MBProgressHUD+MJ.h"
 #import "Const.h"
+#import "HttpTool.h"
 
 @interface OAuthController ()<UIWebViewDelegate>
 
@@ -84,10 +84,6 @@
      redirect_uri：授权成功后的回调地址
      code：授权成功后返回的code
      */
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-//        manager.responseSerializer = [AFJSONResponseSerializer serializer];
-     // AFN的AFJSONResponseSerializer默认不接受text/plain这种类型
     
     NSMutableDictionary *paramgs = [NSMutableDictionary dictionary];
     paramgs[@"client_id"] =APPKey;
@@ -95,20 +91,22 @@
     paramgs[@"grant_type"] = @"authorization_code";
     paramgs[@"redirect_uri"] = APPRedirect;
     paramgs[@"code"] = code;
-    [manager POST:@"https://api.weibo.com/oauth2/access_token" parameters:paramgs success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    
+    [HttpTool post:@"https://api.weibo.com/oauth2/access_token" paramgs:paramgs success:^(id json) {
+        
         [MBProgressHUD hideHUD];
-        Account *account = [Account accountWithDict:responseObject];
+        Account *account = [Account accountWithDict:json];
         [AccountTool saveAccount:account];
         
         //切换根控制器
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         [window switchRootViewController];
-   
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-       [MBProgressHUD hideHUD];
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUD];
         NSLog(@"请求失败---%@",error);
     }];
-}
+    
+   }
 
 
 @end

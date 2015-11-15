@@ -56,7 +56,11 @@
 {
     childVc.title = title;
     childVc.tabBarItem.image = [UIImage imageNamed:image];
+    if([[UIDevice currentDevice].systemVersion doubleValue]>=7.0){
     childVc.tabBarItem.selectedImage =[[UIImage imageNamed:selectImage]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }else{
+        childVc.tabBarItem.selectedImage =[UIImage imageNamed:selectImage];
+    }
     // 设置文字的样式
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
     textAttrs[NSForegroundColorAttributeName] = HWColor(123, 123, 123);

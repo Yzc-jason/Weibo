@@ -20,7 +20,13 @@
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSFontAttributeName] = font;
     CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
+    
+    
+    if([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0){
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+    }else{
+        return [self sizeWithFont:font constrainedToSize:maxSize];
+    }
 }
 
 
