@@ -30,7 +30,6 @@
         self.backgroundColor = [UIColor whiteColor];
         
         UIScrollView *scrollView = [[UIScrollView alloc]init];
-//        scrollView.backgroundColor = [UIColor redColor];
         scrollView.pagingEnabled = YES;
         scrollView.showsVerticalScrollIndicator = NO;
         scrollView.showsHorizontalScrollIndicator = NO;
@@ -40,6 +39,7 @@
         
         UIPageControl *pageControl = [[UIPageControl alloc]init];
         pageControl.userInteractionEnabled = NO;
+        pageControl.hidesForSinglePage = YES;
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_normal"] forKeyPath:@"pageImage"];
         [pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_selected"] forKeyPath:@"currentPageImage"];
         [self addSubview:pageControl];

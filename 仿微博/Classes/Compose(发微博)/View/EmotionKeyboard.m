@@ -12,6 +12,7 @@
 #import "UIView+Extension.h"
 #import "MJExtension.h"
 #import "Emoition.h"
+#import "EmotionTool.h"
 
 
 @interface EmotionKeyboard()<EmotionTabBarDelegat>
@@ -42,7 +43,8 @@
     {
         
         self.rectentListView = [[EmotionListView alloc]init];
-        
+        //加载沙盒数据
+        self.rectentListView.emotions = [EmotionTool recentEmotions];
     }
     return _rectentListView;
 }

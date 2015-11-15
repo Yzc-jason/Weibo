@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class Emoition;
+@class Emoition,EmotionButton;
 
 @interface EmotionPopView : UIView
 
 +(instancetype)emotionPopView;
-@property(nonatomic, strong) Emoition *emotion;
+-(void)showFrom:(EmotionButton *)button;
 
 @end

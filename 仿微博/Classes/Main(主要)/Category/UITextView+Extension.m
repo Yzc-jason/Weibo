@@ -25,8 +25,8 @@
     
     //拼图
     NSUInteger loc = self.selectedRange.location;
-    [attributedText insertAttributedString:text atIndex:loc];
-    //    [attributedText replaceCharactersInRange:self.selectedRange withString:text];
+//    [attributedText insertAttributedString:text atIndex:loc];
+    [attributedText replaceCharactersInRange:self.selectedRange withAttributedString:text];
     
     if(settingBlcok)
     {

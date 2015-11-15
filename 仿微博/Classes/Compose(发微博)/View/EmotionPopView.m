@@ -9,6 +9,7 @@
 #import "EmotionPopView.h"
 #import "Emoition.h"
 #import "EmotionButton.h"
+#import "UIView+Extension.h"
 
 @interface EmotionPopView()
 
@@ -23,10 +24,20 @@
     return [[[NSBundle mainBundle]loadNibNamed:@"EmotionPopView" owner:nil options:nil]lastObject];
 }
 
--(void)setEmotion:(Emoition *)emotion
+
+-(void)showFrom:(EmotionButton *)button
 {
-    _emotion = emotion;
-    self.emotionButton.emotion = emotion;
+    if(button == nil) return;
+    self.emotionButton.emotion = button.emotion;
+    //把popView添加到最上层
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    [window addSubview:self];
+    
+    CGRect btnFrame = [button convertRect:button.bounds toView:nil];
+    self.y = CGRectGetMidY(btnFrame) - self.height;
+    self.centerX = CGRectGetMidX(btnFrame);
+    
 }
+
 
 @end

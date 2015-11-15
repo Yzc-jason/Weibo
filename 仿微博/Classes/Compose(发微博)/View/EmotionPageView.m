@@ -12,7 +12,7 @@
 #import "NSString+Emoji.h"
 #import "EmotionButton.h"
 #import "EmotionPopView.h"
-
+#import "EmotionTool.h"
 
 @interface EmotionPageView()
 
@@ -44,9 +44,31 @@
         [deleteButton addTarget:self action:@selector(deleteBtnClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:deleteButton];
         self.deleteButton =deleteButton;
+        
+        //添加长安手势
+        [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressPageView:)]];
     }
     return self;
 }
+
+/**
+ *  根据手指位置所在的表情按钮
+ */
+-(EmotionButton *)emotionButtonWithLocation:(CGPoint)location
+{
+    NSUInteger count = self.emotions.count;
+    for(int i = 0; i <count; i++)
+    {
+        EmotionButton *btn = self.subviews[i + 1];
+        if(CGRectContainsPoint(btn.frame, location))
+        {
+             return btn;
+        }
+       
+    }
+    return nil;
+}
+
 
 -(void)setEmotions:(NSArray *)emotions
 {
@@ -86,6 +108,30 @@
 }
 
 #pragma mark - 监听方法
+-(void)longPressPageView:(UILongPressGestureRecognizer *)recegnizer
+{
+    CGPoint location = [recegnizer locationInView:recegnizer.view];
+    EmotionButton *btn = [self emotionButtonWithLocation:location];
+    switch (recegnizer.state) {
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateEnded:
+            [self.popView removeFromSuperview];
+            if(btn) //如果手指还在表情按钮上
+            {
+                [self selectEmotion:btn.emotion];
+            }
+            break;
+        case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateChanged:{
+            [self.popView showFrom:btn];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+
 -(void)deleteBtnClick
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DeleteDidClicktNotification" object:nil userInfo:nil];
@@ -93,24 +139,24 @@
 
 -(void)btnClick:(EmotionButton *)btn
 {
-    self.popView.emotion = btn.emotion;
-    //把popView添加到最上层
-    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
-    [window addSubview:self.popView];
-    
-    CGRect btnFrame = [btn convertRect:btn.bounds toView:nil];
-    self.popView.y = CGRectGetMidY(btnFrame) - self.popView.height;
-    self.popView.centerX = CGRectGetMidX(btnFrame);
+    [self.popView showFrom:btn];
     
     //0.25秒后popView自动消失
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.popView removeFromSuperview];
     });
-    
+    [self selectEmotion:btn.emotion];
+}
+
+-(void) selectEmotion:(Emoition *)emotion
+{
+    //将表情存进沙盒
+    [EmotionTool saveRecentEmotion:emotion];
     //选中表情发出通知
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    userInfo[@"SelectEmotionKey"] = btn.emotion;
+    userInfo[@"SelectEmotionKey"] = emotion;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"EmotionDidSelectNotification" object:nil userInfo:userInfo];
 }
+
 
 @end

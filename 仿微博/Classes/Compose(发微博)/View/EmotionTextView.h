@@ -11,4 +11,5 @@
 @class Emoition;
 @interface EmotionTextView : TextView
 -(void)insertEmotion:(Emoition *) emotion;
+-(NSString *)fullText;
 @end
