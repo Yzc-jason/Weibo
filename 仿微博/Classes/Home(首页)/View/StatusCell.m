@@ -16,6 +16,7 @@
 #import "NSString+Extension.h"
 #import "StatusPhotosView.h"
 #import "IconView.h"
+#import "StatusTextView.h"
 
 @interface StatusCell()
 
@@ -41,7 +42,7 @@
 @property(nonatomic, weak) UILabel *sourceLabel;
 
 /**  正文 */
-@property(nonatomic, weak) UILabel *contentLabel;
+@property(nonatomic, weak) StatusTextView *contentLabel;
 
 
 /** 转发微博整体 */
@@ -50,7 +51,7 @@
 @property(nonatomic, weak) StatusPhotosView *retweetPhotosView;
 
 /**  转发微博 + 昵称 */
-@property(nonatomic, weak) UILabel *retweetContentLabel;
+@property(nonatomic, weak) StatusTextView *retweetContentLabel;
 
 /**  工具条 */
 @property(nonatomic, weak) StatusToolbar *toolBar;
@@ -117,8 +118,7 @@
     self.retweetView = retweetView;
     
     /**  转发微博 + 昵称 */
-    UILabel *retweetContentLabel =[[UILabel alloc]init];
-    retweetContentLabel.numberOfLines = 0;
+    StatusTextView *retweetContentLabel =[[StatusTextView alloc]init];
     retweetContentLabel.font =  StatusCellSourceFont;
     [retweetView addSubview:retweetContentLabel];
     self.retweetContentLabel = retweetContentLabel;
@@ -184,9 +184,8 @@
 
     
     /**  正文 */
-    UILabel *contentLabel  = [[UILabel alloc]init];
+    StatusTextView *contentLabel  = [[StatusTextView alloc]init];
     contentLabel.font =  StatusCellSourceFont;
-    contentLabel.numberOfLines = 0;
     [originalView addSubview:contentLabel];
     self.contentLabel = contentLabel;
     

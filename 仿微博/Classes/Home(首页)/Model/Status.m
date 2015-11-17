@@ -17,6 +17,7 @@
 #import "TextPart.h"
 #import "EmotionTool.h"
 #import "Emoition.h"
+#import "Special.h"
 
 @implementation Status
 
@@ -68,6 +69,7 @@
     }];
     
     UIFont *font =[UIFont systemFontOfSize:14];
+    NSMutableArray *specials = [NSMutableArray array];
     //按顺序拼接文字
     for (TextPart *part in parts) {
         NSAttributedString *subStr = nil;
@@ -87,6 +89,12 @@
             subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{
                                                             NSForegroundColorAttributeName : [UIColor redColor]
                                                         }];
+            Special *special = [[Special alloc]init];
+            special.text = part.text;
+            NSUInteger loc = attributedText.length;
+            NSUInteger len = part.text.length;
+            special.range = NSMakeRange(loc, len);
+            [specials addObject:special];
         }else{//非特殊文字
             subStr = [[NSAttributedString alloc]initWithString:part.text];
 
@@ -94,7 +102,7 @@
         [attributedText appendAttributedString:subStr];
     }
     [attributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, attributedText.length)];
-    
+    [attributedText addAttribute:@"specials" value:specials range:NSMakeRange(0, 1)];
     return attributedText;
 }
 

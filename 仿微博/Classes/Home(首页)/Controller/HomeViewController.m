@@ -167,12 +167,7 @@
  */
 -(void) setDownRefresh
 {
-//    UIRefreshControl *control = [[UIRefreshControl alloc]init];
-//    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
-//    [self.tableView addSubview:control];
-//    
-//    [control beginRefreshing];
-//    [self refreshStateChange:control];
+
     
     //1.添加刷新控件
     [self.tableView addHeaderWithTarget:self action:@selector(refreshStateChange)];
@@ -380,6 +375,7 @@
 // 点击Cell
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"HomeViewController---didSelectRowAtIndexPath");
 }
 
 // Cell循环利用

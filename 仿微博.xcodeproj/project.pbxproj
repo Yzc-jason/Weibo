@@ -11,6 +11,8 @@
 		180B757D1BFAAF7B00705C5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180B757C1BFAAF7B00705C5F /* CoreGraphics.framework */; };
 		180B757F1BFAB14300705C5F /* libicucore.A.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180B757E1BFAB14300705C5F /* libicucore.A.tbd */; };
 		180B75821BFABA0C00705C5F /* TextPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75811BFABA0C00705C5F /* TextPart.m */; };
+		180B75851BFAEEAD00705C5F /* StatusTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75841BFAEEAC00705C5F /* StatusTextView.m */; };
+		180B75881BFAF35F00705C5F /* Special.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75871BFAF35F00705C5F /* Special.m */; };
 		180ED0BB1BF8981600D9C420 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 180ED0AB1BF8981600D9C420 /* MJRefresh.bundle */; };
 		180ED0BC1BF8981600D9C420 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180ED0AE1BF8981600D9C420 /* MJRefreshBaseView.m */; };
 		180ED0BD1BF8981600D9C420 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 180ED0B01BF8981600D9C420 /* MJRefreshConst.m */; };
@@ -156,6 +158,10 @@
 		180B757E1BFAB14300705C5F /* libicucore.A.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.A.tbd; path = usr/lib/libicucore.A.tbd; sourceTree = SDKROOT; };
 		180B75801BFABA0C00705C5F /* TextPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextPart.h; sourceTree = "<group>"; };
 		180B75811BFABA0C00705C5F /* TextPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextPart.m; sourceTree = "<group>"; };
+		180B75831BFAEEAC00705C5F /* StatusTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusTextView.h; sourceTree = "<group>"; };
+		180B75841BFAEEAC00705C5F /* StatusTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusTextView.m; sourceTree = "<group>"; };
+		180B75861BFAF35F00705C5F /* Special.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Special.h; sourceTree = "<group>"; };
+		180B75871BFAF35F00705C5F /* Special.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Special.m; sourceTree = "<group>"; };
 		180ED0AB1BF8981600D9C420 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		180ED0AC1BF8981600D9C420 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		180ED0AD1BF8981600D9C420 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -535,6 +541,8 @@
 				1817953C1BEF19E600070170 /* Photo.m */,
 				180B75801BFABA0C00705C5F /* TextPart.h */,
 				180B75811BFABA0C00705C5F /* TextPart.m */,
+				180B75861BFAF35F00705C5F /* Special.h */,
+				180B75871BFAF35F00705C5F /* Special.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -557,6 +565,8 @@
 				181888E61BF1D56B00165BF7 /* StatusPhotosView.m */,
 				181888E81BF1DC5100165BF7 /* StatusPhotoView.h */,
 				181888E91BF1DC5100165BF7 /* StatusPhotoView.m */,
+				180B75831BFAEEAC00705C5F /* StatusTextView.h */,
+				180B75841BFAEEAC00705C5F /* StatusTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1203,6 +1213,7 @@
 				1876BEA21BEB972E000C9FB4 /* AFSecurityPolicy.m in Sources */,
 				1876BE9F1BEB972E000C9FB4 /* AFHTTPRequestOperationManager.m in Sources */,
 				182CFABB1BF7139C00B77FDF /* EmotionPageView.m in Sources */,
+				180B75851BFAEEAD00705C5F /* StatusTextView.m in Sources */,
 				189538F81BEC9E4A00FA0FCA /* NSData+ImageContentType.m in Sources */,
 				1851312D1BF655D200286D6B /* Emoition.m in Sources */,
 				180B75821BFABA0C00705C5F /* TextPart.m in Sources */,
@@ -1246,6 +1257,7 @@
 				181795371BEEE10500070170 /* StatusCell.m in Sources */,
 				18C125791BE85EDB00E624A6 /* UIBarButtonItem+Extension.m in Sources */,
 				1876BEA71BEB972E000C9FB4 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				180B75881BFAF35F00705C5F /* Special.m in Sources */,
 				1871FB6A1BF8305E00664F4F /* EmotionAttachment.m in Sources */,
 				182F91EF1BF0B526001D91E6 /* NSDate+Extension.m in Sources */,
 				181888EA1BF1DC5200165BF7 /* StatusPhotoView.m in Sources */,
