@@ -13,6 +13,13 @@
 		180B75821BFABA0C00705C5F /* TextPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75811BFABA0C00705C5F /* TextPart.m */; };
 		180B75851BFAEEAD00705C5F /* StatusTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75841BFAEEAC00705C5F /* StatusTextView.m */; };
 		180B75881BFAF35F00705C5F /* Special.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75871BFAF35F00705C5F /* Special.m */; };
+		180B75E71BFB903100705C5F /* StatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75E61BFB903000705C5F /* StatusTool.m */; };
+		180B75F41BFB979D00705C5F /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75EA1BFB979D00705C5F /* FMDatabase.m */; };
+		180B75F51BFB979D00705C5F /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75EC1BFB979D00705C5F /* FMDatabaseAdditions.m */; };
+		180B75F61BFB979D00705C5F /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75EE1BFB979D00705C5F /* FMDatabasePool.m */; };
+		180B75F71BFB979D00705C5F /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75F01BFB979D00705C5F /* FMDatabaseQueue.m */; };
+		180B75F81BFB979D00705C5F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75F31BFB979D00705C5F /* FMResultSet.m */; };
+		180B75FA1BFB97B000705C5F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180B75F91BFB97B000705C5F /* libsqlite3.0.tbd */; };
 		180ED0BB1BF8981600D9C420 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 180ED0AB1BF8981600D9C420 /* MJRefresh.bundle */; };
 		180ED0BC1BF8981600D9C420 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180ED0AE1BF8981600D9C420 /* MJRefreshBaseView.m */; };
 		180ED0BD1BF8981600D9C420 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 180ED0B01BF8981600D9C420 /* MJRefreshConst.m */; };
@@ -162,6 +169,20 @@
 		180B75841BFAEEAC00705C5F /* StatusTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusTextView.m; sourceTree = "<group>"; };
 		180B75861BFAF35F00705C5F /* Special.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Special.h; sourceTree = "<group>"; };
 		180B75871BFAF35F00705C5F /* Special.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Special.m; sourceTree = "<group>"; };
+		180B75E51BFB903000705C5F /* StatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusTool.h; sourceTree = "<group>"; };
+		180B75E61BFB903000705C5F /* StatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusTool.m; sourceTree = "<group>"; };
+		180B75E91BFB979D00705C5F /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		180B75EA1BFB979D00705C5F /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		180B75EB1BFB979D00705C5F /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		180B75EC1BFB979D00705C5F /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		180B75ED1BFB979D00705C5F /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		180B75EE1BFB979D00705C5F /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		180B75EF1BFB979D00705C5F /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		180B75F01BFB979D00705C5F /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		180B75F11BFB979D00705C5F /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		180B75F21BFB979D00705C5F /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		180B75F31BFB979D00705C5F /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		180B75F91BFB97B000705C5F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		180ED0AB1BF8981600D9C420 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		180ED0AC1BF8981600D9C420 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		180ED0AD1BF8981600D9C420 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -406,6 +427,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180B75FA1BFB97B000705C5F /* libsqlite3.0.tbd in Frameworks */,
 				180B757F1BFAB14300705C5F /* libicucore.A.tbd in Frameworks */,
 				180B757D1BFAAF7B00705C5F /* CoreGraphics.framework in Frameworks */,
 			);
@@ -435,6 +457,33 @@
 				180B757A1BFAAF4600705C5F /* RegexKitLite.m */,
 			);
 			path = RegexKitLite;
+			sourceTree = "<group>";
+		};
+		180B75E41BFB901D00705C5F /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				180B75E51BFB903000705C5F /* StatusTool.h */,
+				180B75E61BFB903000705C5F /* StatusTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		180B75E81BFB979D00705C5F /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				180B75E91BFB979D00705C5F /* FMDatabase.h */,
+				180B75EA1BFB979D00705C5F /* FMDatabase.m */,
+				180B75EB1BFB979D00705C5F /* FMDatabaseAdditions.h */,
+				180B75EC1BFB979D00705C5F /* FMDatabaseAdditions.m */,
+				180B75ED1BFB979D00705C5F /* FMDatabasePool.h */,
+				180B75EE1BFB979D00705C5F /* FMDatabasePool.m */,
+				180B75EF1BFB979D00705C5F /* FMDatabaseQueue.h */,
+				180B75F01BFB979D00705C5F /* FMDatabaseQueue.m */,
+				180B75F11BFB979D00705C5F /* FMDB.h */,
+				180B75F21BFB979D00705C5F /* FMResultSet.h */,
+				180B75F31BFB979D00705C5F /* FMResultSet.m */,
+			);
+			path = fmdb;
 			sourceTree = "<group>";
 		};
 		180ED0AA1BF8981600D9C420 /* MJRefresh */ = {
@@ -512,6 +561,7 @@
 		1820DAFE1BE7C54E00F98277 /* Home(首页) */ = {
 			isa = PBXGroup;
 			children = (
+				180B75E41BFB901D00705C5F /* Tool */,
 				1820DAFF1BE7C54E00F98277 /* Controller */,
 				1820DB021BE7C54E00F98277 /* Model */,
 				1820DB031BE7C54E00F98277 /* View */,
@@ -599,6 +649,7 @@
 		1820DB0A1BE7C54E00F98277 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				180B75E81BFB979D00705C5F /* fmdb */,
 				180B75781BFAAF4600705C5F /* RegexKitLite */,
 				180ED0AA1BF8981600D9C420 /* MJRefresh */,
 				189539121BECAD2700FA0FCA /* MJExtension */,
@@ -850,6 +901,7 @@
 		187F66041BE785E30094AF20 = {
 			isa = PBXGroup;
 			children = (
+				180B75F91BFB97B000705C5F /* libsqlite3.0.tbd */,
 				180B757E1BFAB14300705C5F /* libicucore.A.tbd */,
 				180B757C1BFAAF7B00705C5F /* CoreGraphics.framework */,
 				187F660F1BE785E30094AF20 /* 仿微博 */,
@@ -1221,6 +1273,7 @@
 				185131271BF64DC800286D6B /* EmotionTabBarButton.m in Sources */,
 				18CC25A71BF3998800308942 /* ComposeController.m in Sources */,
 				189538FD1BEC9E4A00FA0FCA /* SDWebImageDownloaderOperation.m in Sources */,
+				180B75F71BFB979D00705C5F /* FMDatabaseQueue.m in Sources */,
 				189539341BECAD2700FA0FCA /* NSObject+MJMember.m in Sources */,
 				1820DB1E1BE7C54E00F98277 /* NavigationController.m in Sources */,
 				180ED0BE1BF8981600D9C420 /* MJRefreshFooterView.m in Sources */,
@@ -1237,12 +1290,14 @@
 				182F91F21BF0C2FB001D91E6 /* NSString+Extension.m in Sources */,
 				185131211BF63F2F00286D6B /* EmotionListView.m in Sources */,
 				18CC25AA1BF3A56400308942 /* TextView.m in Sources */,
+				180B75F61BFB979D00705C5F /* FMDatabasePool.m in Sources */,
 				1820DB201BE7C54E00F98277 /* AppDelegate.m in Sources */,
 				189538F71BEC9E4A00FA0FCA /* MKAnnotationView+WebCache.m in Sources */,
 				1876BE761BEB92A3000C9FB4 /* OAuthController.m in Sources */,
 				189539041BEC9E4A00FA0FCA /* UIImageView+HighlightedWebCache.m in Sources */,
 				1876BEAA1BEB972E000C9FB4 /* UIButton+AFNetworking.m in Sources */,
 				180ED0C11BF8981600D9C420 /* UIScrollView+MJRefresh.m in Sources */,
+				180B75F41BFB979D00705C5F /* FMDatabase.m in Sources */,
 				182CFAC31BF7902000B77FDF /* EmotionPopView.m in Sources */,
 				189539001BEC9E4A00FA0FCA /* UIButton+WebCache.m in Sources */,
 				1820DB1F1BE7C54E00F98277 /* TabBarController.m in Sources */,
@@ -1282,8 +1337,10 @@
 				181795401BEF352A00070170 /* StatusToolbar.m in Sources */,
 				189539011BEC9E4A00FA0FCA /* UIImage+GIF.m in Sources */,
 				189539081BECA46F00FA0FCA /* Foundation+Log.m in Sources */,
+				180B75F51BFB979D00705C5F /* FMDatabaseAdditions.m in Sources */,
 				1876BEA61BEB972E000C9FB4 /* AFURLSessionManager.m in Sources */,
 				18778BC01BED1DDD002C02D5 /* LoadMoreFooter.m in Sources */,
+				180B75F81BFB979D00705C5F /* FMResultSet.m in Sources */,
 				1895390B1BECA50900FA0FCA /* TitleButton.m in Sources */,
 				189538FE1BEC9E4A00FA0FCA /* SDWebImageManager.m in Sources */,
 				189539111BECACA400FA0FCA /* Status.m in Sources */,
@@ -1298,6 +1355,7 @@
 				1876BEA81BEB972E000C9FB4 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				1817953D1BEF19E600070170 /* Photo.m in Sources */,
 				1871FB751BF88CF400664F4F /* HttpTool.m in Sources */,
+				180B75E71BFB903100705C5F /* StatusTool.m in Sources */,
 				1820DB1D1BE7C54E00F98277 /* HomeViewController.m in Sources */,
 				1876BEA91BEB972E000C9FB4 /* UIAlertView+AFNetworking.m in Sources */,
 				18BDEBB41BE91CEA00F0B3E3 /* TabBar.m in Sources */,

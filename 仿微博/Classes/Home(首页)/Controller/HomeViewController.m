@@ -22,6 +22,7 @@
 #import "StatusCell.h"
 #import "StatusFrame.h"
 #import "MJRefresh.h"
+#import "StatusTool.h"
 
 @interface HomeViewController()<DropDownMenuDelegate>
 
@@ -140,11 +141,11 @@
         long long maxId =lastStatusF.status.idstr.longLongValue - 1;
         paramgs[@"max_id"] = @(maxId);
     }
-
     
-    [HttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json"  paramgs:paramgs success:^(id json) {
+    //定义一个block处理返回的字典数据
+    void(^dealingResult)(NSArray *) = ^(NSArray *statuses){
         //将“微博字典”数组转为 “微博模型” 数组
-        NSArray *newStatuses = [Status objectArrayWithKeyValuesArray:json[@"statuses"]];
+        NSArray *newStatuses = [Status objectArrayWithKeyValuesArray:statuses];
         
         NSArray *newFrames = [self stausFrameWithStatuses:newStatuses];
         // 将更多的微博数据，添加到总数组的最后面
@@ -155,11 +156,26 @@
         
         // 结束刷新(隐藏footer)
         self.tableView.tableFooterView.hidden = YES;
-    } failure:^(NSError *error) {
-        self.tableView.tableFooterView.hidden = YES;
-        NSLog(@"请求失败---%@",error);
+    };
 
-    }];
+    
+    NSArray *statuses=[StatusTool statusesWithParamgs:paramgs];
+    if(statuses.count){
+        
+        dealingResult(statuses);
+        
+    }else{
+        [HttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json"  paramgs:paramgs success:^(id json) {
+            [StatusTool saveStatuses:json[@"statuses"]];
+            dealingResult(json[@"statuses"]);
+            
+        } failure:^(NSError *error) {
+            self.tableView.tableFooterView.hidden = YES;
+            NSLog(@"请求失败---%@",error);
+            
+        }];
+
+    }
 }
 
 /**
@@ -189,11 +205,11 @@
         paramgs[@"since_id"] = firstStatusF.status.idstr;
     }
     
-    
-    [HttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json"  paramgs:paramgs success:^(id json) {
+    //定义一个block处理返回的字典数据
+    void(^dealingResult)(NSArray *) = ^(NSArray *statuses){
         //将“微博字典”数组转为 “微博模型” 数组
         
-        NSArray *newStatuses = [Status objectArrayWithKeyValuesArray:json[@"statuses"]];
+        NSArray *newStatuses = [Status objectArrayWithKeyValuesArray:statuses];
         NSArray *newFrames = [self stausFrameWithStatuses:newStatuses];
         
         //将最新的微博数据，添加到总数组最前面
@@ -207,11 +223,25 @@
         
         //显示最新的微博数量
         [self showNewStatusCount:newStatuses.count];
-    } failure:^(NSError *error) {
-        [self.tableView headerEndRefreshing];
-        NSLog(@"请求失败---%@",error);
-    }];
-
+    };
+    
+    
+    NSArray *statuses = [StatusTool statusesWithParamgs:paramgs];
+    if(statuses.count){
+        
+        dealingResult(statuses);
+       
+    }else{
+        [HttpTool get:@"https://api.weibo.com/2/statuses/friends_timeline.json"  paramgs:paramgs success:^(id json) {
+            
+            [StatusTool saveStatuses:json[@"statuses"]];
+            dealingResult(json[@"statuses"]);
+            
+        } failure:^(NSError *error) {
+            [self.tableView headerEndRefreshing];
+            NSLog(@"请求失败---%@",error);
+        }];
+    }
   }
 
 
@@ -242,7 +272,7 @@
  *
  *  @param count 最新微博数
  */
--(void) showNewStatusCount:(int)count
+-(void) showNewStatusCount:(NSUInteger)count
 {
     self.tabBarItem.badgeValue = nil;
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
@@ -260,7 +290,7 @@
         
         label.text = @"没有新的微博数据，请稍后再试";
     }else{
-        label.text = [NSString stringWithFormat:@"共有%d条新的微博数据",count];
+        label.text = [NSString stringWithFormat:@"共有%zd条新的微博数据",count];
     }
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
@@ -385,22 +415,6 @@
     cell.statusFrame = self.statuesFrame[indexPath.row];
     return cell;
 }
-//
-//-(void) scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    //如果tableView还没有数据，就直接返回
-//    if(self.statuesFrame.count == 0 || self.tableView.tableFooterView.isHidden == NO) return;
-//    CGFloat offsetY = scrollView.contentOffset.y;
-//    //当最后一个cell完全显示在眼前是，contentOffset的y值
-//    CGFloat judgeOffsetY = scrollView.contentSize.height +scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
-//    if(offsetY >= judgeOffsetY)   //最后一个cell完全进入视野范围内
-//    {
-//        //显示footer
-//        self.tableView.tableFooterView.hidden = NO;
-//        //加载更多的数据
-//        [self loadMoreStatus];
-//    }
-//}
 
 
 @end
