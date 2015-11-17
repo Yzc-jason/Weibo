@@ -6,10 +6,17 @@
 //  Copyright © 2015年 Yzc. All rights reserved.
 //
 
+
 #import "Status.h"
+#import "UIKit/UIKit.h"
 #import "Photo.h"
+#import "User.h"
 #import "MJExtension.h"
 #import "NSDate+Extension.h"
+#import "RegexKitLite.h"
+#import "TextPart.h"
+#import "EmotionTool.h"
+#import "Emoition.h"
 
 @implementation Status
 
@@ -17,6 +24,93 @@
 {
     return @{@"pic_urls" : [Photo class]};
 }
+-(NSAttributedString *)attributedTextWithText:(NSString *)text
+{
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc]init];
+    
+    // 表情的规则
+    NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]";
+    // @的规则
+    NSString *atPattern = @"@[0-9a-zA-Z\\u4e00-\\u9fa5-_]+";
+    // #话题#的规则
+    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
+    // url链接的规则
+    NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", emotionPattern, atPattern, topicPattern, urlPattern];
+    NSMutableArray *parts = [NSMutableArray array];
+    //遍历所有的特殊字符串
+    [text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        if((*capturedRanges).length == 0) return ;
+        
+        TextPart *part = [[TextPart alloc]init];
+        part.special = YES;
+        part.text = *capturedStrings;
+        part.emotion = [part.text hasPrefix:@"["] && [part.text hasSuffix:@"]"];
+        part.range = *capturedRanges;
+        [parts addObject:part];
+    }];
+    //遍历所有的非特殊字符串
+    [text enumerateStringsSeparatedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        if((*capturedRanges).length == 0) return ;
+        
+        TextPart *part = [[TextPart alloc]init];
+        part.text = *capturedStrings;
+        part.range = *capturedRanges;
+        [parts addObject:part];
+    }];
+    
+    [parts sortUsingComparator:^NSComparisonResult(TextPart *part1, TextPart *part2) {
+        if(part1.range.location > part2.range.location)
+        {
+            return NSOrderedDescending;
+        }
+        return NSOrderedAscending;
+    }];
+    
+    UIFont *font =[UIFont systemFontOfSize:14];
+    //按顺序拼接文字
+    for (TextPart *part in parts) {
+        NSAttributedString *subStr = nil;
+        if(part.isEmotion)
+        { //表情
+            NSTextAttachment *attch = [[NSTextAttachment alloc]init];
+            NSString *name =[EmotionTool emotionWithChs:part.text].png;
+            if(name)
+            { //找到相应图片
+                attch.image = [UIImage imageNamed:name];
+                attch.bounds = CGRectMake(0, -3, font.lineHeight, font.lineHeight);
+                subStr = [NSAttributedString attributedStringWithAttachment:attch];
+            }else{ //表情图片不存在
+                subStr = [[NSAttributedString alloc]initWithString:part.text];
+            }
+        }else  if(part.special){ //非表情特殊文字
+            subStr = [[NSAttributedString alloc] initWithString:part.text attributes:@{
+                                                            NSForegroundColorAttributeName : [UIColor redColor]
+                                                        }];
+        }else{//非特殊文字
+            subStr = [[NSAttributedString alloc]initWithString:part.text];
+
+        }
+        [attributedText appendAttributedString:subStr];
+    }
+    [attributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, attributedText.length)];
+    
+    return attributedText;
+}
+
+-(void)setText:(NSString *)text
+{
+    _text = [text copy];
+    self.attributedText = [self attributedTextWithText:text];
+}
+
+-(void)setRetweeted_status:(Status *)retweeted_status
+{
+    _retweeted_status = retweeted_status;
+    NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status.user.name,retweeted_status.text];
+    self.retweeted_attributedText = [self attributedTextWithText:retweetContent];
+}
+
 
 -(void)setSource:(NSString *)source
 {

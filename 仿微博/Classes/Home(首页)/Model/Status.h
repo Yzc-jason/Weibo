@@ -11,9 +11,11 @@
 @interface Status : NSObject
 /**	string	字符串型的用户ID*/
 @property (nonatomic, copy) NSString *idstr;
-
 /**	string	微博信息内容*/
 @property (nonatomic, copy) NSString *text;
+/**	string	微博信息内容  带有属性的文字*/
+@property (nonatomic, copy) NSAttributedString *attributedText;
+
 
 /**	object	微博作者的用户信息字段 详细*/
 @property (nonatomic, strong) User *user;
@@ -28,6 +30,10 @@
 
 /** 被转发的原微博信息字段，当该微博为转发微博时返回 */
 @property(nonatomic, strong) Status *retweeted_status;
+
+/**	string	被微博信息内容  带有属性的文字*/
+@property (nonatomic, copy) NSAttributedString *retweeted_attributedText;
+
 
 /**	int	转发数*/
 @property (nonatomic, assign) int reposts_count;

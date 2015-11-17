@@ -14,6 +14,7 @@
 
 -(void)viewDidLoad
 {
+    [super viewDidLoad];
     SearchBar *searchBar = [SearchBar searchBar];
     searchBar.width = 300;
     searchBar.height = 30 ;

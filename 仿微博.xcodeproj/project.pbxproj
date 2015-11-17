@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180B757B1BFAAF4600705C5F /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B757A1BFAAF4600705C5F /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		180B757D1BFAAF7B00705C5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180B757C1BFAAF7B00705C5F /* CoreGraphics.framework */; };
+		180B757F1BFAB14300705C5F /* libicucore.A.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180B757E1BFAB14300705C5F /* libicucore.A.tbd */; };
+		180B75821BFABA0C00705C5F /* TextPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B75811BFABA0C00705C5F /* TextPart.m */; };
 		180ED0BB1BF8981600D9C420 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 180ED0AB1BF8981600D9C420 /* MJRefresh.bundle */; };
 		180ED0BC1BF8981600D9C420 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180ED0AE1BF8981600D9C420 /* MJRefreshBaseView.m */; };
 		180ED0BD1BF8981600D9C420 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 180ED0B01BF8981600D9C420 /* MJRefreshConst.m */; };
@@ -146,6 +150,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180B75791BFAAF4600705C5F /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		180B757A1BFAAF4600705C5F /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		180B757C1BFAAF7B00705C5F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		180B757E1BFAB14300705C5F /* libicucore.A.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.A.tbd; path = usr/lib/libicucore.A.tbd; sourceTree = SDKROOT; };
+		180B75801BFABA0C00705C5F /* TextPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextPart.h; sourceTree = "<group>"; };
+		180B75811BFABA0C00705C5F /* TextPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextPart.m; sourceTree = "<group>"; };
 		180ED0AB1BF8981600D9C420 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		180ED0AC1BF8981600D9C420 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		180ED0AD1BF8981600D9C420 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -390,6 +400,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180B757F1BFAB14300705C5F /* libicucore.A.tbd in Frameworks */,
+				180B757D1BFAAF7B00705C5F /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +422,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180B75781BFAAF4600705C5F /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				180B75791BFAAF4600705C5F /* RegexKitLite.h */,
+				180B757A1BFAAF4600705C5F /* RegexKitLite.m */,
+			);
+			path = RegexKitLite;
+			sourceTree = "<group>";
+		};
 		180ED0AA1BF8981600D9C420 /* MJRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +533,8 @@
 				181795391BEEE21400070170 /* StatusFrame.m */,
 				1817953B1BEF19E600070170 /* Photo.h */,
 				1817953C1BEF19E600070170 /* Photo.m */,
+				180B75801BFABA0C00705C5F /* TextPart.h */,
+				180B75811BFABA0C00705C5F /* TextPart.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -566,6 +589,7 @@
 		1820DB0A1BE7C54E00F98277 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				180B75781BFAAF4600705C5F /* RegexKitLite */,
 				180ED0AA1BF8981600D9C420 /* MJRefresh */,
 				189539121BECAD2700FA0FCA /* MJExtension */,
 				189538D51BEC9E4A00FA0FCA /* SDWebImage */,
@@ -816,6 +840,8 @@
 		187F66041BE785E30094AF20 = {
 			isa = PBXGroup;
 			children = (
+				180B757E1BFAB14300705C5F /* libicucore.A.tbd */,
+				180B757C1BFAAF7B00705C5F /* CoreGraphics.framework */,
 				187F660F1BE785E30094AF20 /* 仿微博 */,
 				187F66291BE785E30094AF20 /* 仿微博Tests */,
 				187F66341BE785E30094AF20 /* 仿微博UITests */,
@@ -1168,16 +1194,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187F66121BE785E30094AF20 /* main.m in Sources */,
 				189539021BEC9E4A00FA0FCA /* UIImage+MultiFormat.m in Sources */,
 				189538FC1BEC9E4A00FA0FCA /* SDWebImageDownloader.m in Sources */,
 				189539031BEC9E4A00FA0FCA /* UIImage+WebP.m in Sources */,
 				18C125761BE85DDE00E624A6 /* UIView+Extension.m in Sources */,
-				187F66121BE785E30094AF20 /* main.m in Sources */,
+				180B757B1BFAAF4600705C5F /* RegexKitLite.m in Sources */,
 				1876BEA21BEB972E000C9FB4 /* AFSecurityPolicy.m in Sources */,
 				1876BE9F1BEB972E000C9FB4 /* AFHTTPRequestOperationManager.m in Sources */,
 				182CFABB1BF7139C00B77FDF /* EmotionPageView.m in Sources */,
 				189538F81BEC9E4A00FA0FCA /* NSData+ImageContentType.m in Sources */,
 				1851312D1BF655D200286D6B /* Emoition.m in Sources */,
+				180B75821BFABA0C00705C5F /* TextPart.m in Sources */,
 				1876BE9E1BEB972E000C9FB4 /* AFHTTPRequestOperation.m in Sources */,
 				185131271BF64DC800286D6B /* EmotionTabBarButton.m in Sources */,
 				18CC25A71BF3998800308942 /* ComposeController.m in Sources */,

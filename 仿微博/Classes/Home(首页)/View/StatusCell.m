@@ -239,7 +239,7 @@
    
     /** 正文 */
     self.contentLabel.frame = statusFrame.contentLabelF;
-    self.contentLabel.text = status.text;
+    self.contentLabel.attributedText = status.attributedText;
     
     /** 配图 */
     if(status.pic_urls.count)
@@ -262,8 +262,7 @@
         self.retweetView.frame = statusFrame.retweetViewF;
      
         /** 被转发微博正文 */
-        NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@",retweeted_status_user.name,retweeted_status.text];
-        self.retweetContentLabel.text = retweetContent;
+        self.retweetContentLabel.attributedText = status.retweeted_attributedText;
         self.retweetContentLabel.frame = statusFrame.retweetContentLabelF;
         
         /** 被转发微博配图 */

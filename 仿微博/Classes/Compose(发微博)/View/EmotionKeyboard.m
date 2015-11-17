@@ -10,7 +10,6 @@
 #import "EmotionTabBar.h"
 #import "EmotionListView.h"
 #import "UIView+Extension.h"
-#import "MJExtension.h"
 #import "Emoition.h"
 #import "EmotionTool.h"
 
@@ -56,8 +55,8 @@
     {
         
         self.defaultListView = [[EmotionListView alloc]init];
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/default/info.plist" ofType:nil];
-        self.defaultListView.emotions = [Emoition objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+       
+        self.defaultListView.emotions = [EmotionTool defaultEmotions];
     }
     return _defaultListView;
 }
@@ -68,8 +67,8 @@
     {
        
         self.emojiListView = [[EmotionListView alloc]init];
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
-        self.emojiListView.emotions = [Emoition objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+        
+        self.emojiListView.emotions = [EmotionTool emojiEmotions];
     }
     return _emojiListView;
 }
@@ -80,8 +79,8 @@
     {
         
         self.lxhListView = [[EmotionListView alloc]init];
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/lxh/info.plist" ofType:nil];
-        self.lxhListView.emotions = [Emoition objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+       
+        self.lxhListView.emotions = [EmotionTool lxhEmotions];
     }
     return _lxhListView;
 }

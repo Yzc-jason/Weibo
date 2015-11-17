@@ -7,6 +7,8 @@
 //
 
 #import "EmotionTool.h"
+#import "Emoition.h"
+#import "MJExtension.h"
 #define RecentEmotionsPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"emotions.archive"]
 
 @class Emoition;
@@ -25,6 +27,8 @@ static NSMutableArray *_recentEmotions;
     }
 }
 
+
+
 + (void)saveRecentEmotion:(Emoition *)emotion
 {
     
@@ -39,12 +43,52 @@ static NSMutableArray *_recentEmotions;
     
     //将所有的表情数据写入沙盒
     [NSKeyedArchiver archiveRootObject:_recentEmotions toFile:RecentEmotionsPath];
-   
-
 }
+
++(Emoition *)emotionWithChs:(NSString *)chs
+{
+    NSArray *defaults = [self defaultEmotions];
+    for (Emoition *emotion in defaults) {
+        if([emotion.chs isEqualToString:chs]) return emotion;
+    }
+    NSArray *lxhs = [self lxhEmotions];
+    for (Emoition *emotion in lxhs) {
+        if([emotion.chs isEqualToString:chs]) return emotion;
+    }
+    return nil;
+}
+
+
+
 + (NSArray *)recentEmotions
 {
     return _recentEmotions;
+}
+
+static NSArray *_defaultEmotions, *_emojiEmotions, *_lxhEmotions;
++ (NSArray *)emojiEmotions
+{
+    if (!_emojiEmotions) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
+        _emojiEmotions = [Emoition objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+    }
+    return _emojiEmotions;
+}
++ (NSArray *)defaultEmotions
+{
+    if (!_defaultEmotions) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/default/info.plist" ofType:nil];
+        _defaultEmotions = [Emoition objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+    }
+    return _defaultEmotions;
+}
++ (NSArray *)lxhEmotions
+{
+    if (!_lxhEmotions) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/lxh/info.plist" ofType:nil];
+        _lxhEmotions = [Emoition objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:path]];
+    }
+    return _lxhEmotions;
 }
 
 @end
